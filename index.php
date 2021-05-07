@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
     <title>Playeras Obligame perro</title>
 </head>
 
@@ -38,7 +39,8 @@
                     <li class="nav__item"><a href="#about" class="nav__link">Nosotros</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contactanos</a></li>
                     <li class="nav__item"><a href="view/tienda.html" class="nav__link">Tienda</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">Clientes Premiuns</a></li>
+                    <!--<li class="nav__item"><a href="#" class="nav__link">Clientes Premiuns</a></li>-->
+                    <li class="nav__item"><a href="view/carrito.php" class="nav__link">Carrito</a></li>
 
                     <!-- <button id="checkout" class="button-checkout" onclick="pay()">Pagar</button> -->
 
@@ -153,20 +155,22 @@
                 <span class="tienda__detail"><?php echo $row['stock']; ?></span>
                 <span class="tienda__detail"><?php echo $row['categoria']; ?></span>
                 <span class="tienda_precio">$<?php echo $row['precio']; ?>MXN</span>
-                <span>
-                    <input type="text" value="<?php echo $row['id_producto']; ?>" hidden>
-                    <input type="text" value="<?php echo $row['nombre']; ?>" hidden>
-                    <input type="text" value="<?php echo $row['categoria']; ?>" hidden>
-                    <input type="text" value="<?php echo $row['precio']; ?>" hidden>
-                </span>
+                <form method="POST" action="data/insertar_car.php">
+                <input class="num_pro" name="cantidad" value="1" type="number">
+                    <input name="id" type="text" value="<?php echo $row['id_producto']; ?>" hidden>
+                    <input name="nombre" type="text" value="<?php echo $row['nombre']; ?>" hidden>
+                    <input name="categoria" type="text" value="<?php echo $row['categoria']; ?>" hidden>
+                    <input name="precio" type="text" value="<?php echo $row['precio']; ?>" hidden>
                 <!-- <a href="" class="button menu__button" >
                     <i class='bx bx-cart-alt' ></i>
                 </a> -->
-                <button class="button menu__button" onclick="add('p2',<?php echo $row['precio']; ?>)">
+                <button class="button menu__button" name="car" onclick="add('p2',2)">
                     <i class='bx bx-cart-alt'></i>
                 </button>
+                </form>
             </div>
-            <?php }?>
+            <?php }
+            ?>
         </div>
     </section>
 
